@@ -59,6 +59,36 @@ public class MarkovChain {
       e.printStackTrace();
     }
   }
+  
+  public String generate(String[] prefix, int len){
+    if(!data.containsKey(join(prefix, " "))){
+      return "";
+    }
+    
+    ArrayList<String> text = new ArrayList<String>();
+    for(String word: prefix){
+      text.add(word);
+    }
+    
+    len -= prefix.length;
+    while(len > 0){
+      String key = text.get(text.size()-2)+ " " + text.get(text.size()-1);
+      ArrayList<String> val = this.data.get(key);
+      
+      text.add(val.get((int) random(val.size())));
+      len--;
+    }
+    
+    return join(text.toArray(new String[0]), " ");
+  }
+  
+  public String next(String prefix){
+    if(prefix == null || !this.data.containsKey(prefix)){
+      return null;
+    }
+    ArrayList<String> val = this.data.get(prefix);
+    return val.get((int) random(val.size()));
+  }
     
   private String[] addLine(String[] prefix, String line){
     String[] words = line.split(" ");
