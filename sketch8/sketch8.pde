@@ -1,6 +1,13 @@
+import processing.pdf.*;
+
+String filename = Integer.toString(year()) + Integer.toString(month()) + Integer.toString(day()) +
+    Integer.toString(hour()) + Integer.toString(minute()) + Integer.toString(second());
+
 void setup(){
   frameRate(30);
   size(500,500);
+  
+  beginRecord(PDF, "print/"+filename+".pdf");
   smooth();
   background(255);
 }
@@ -15,5 +22,13 @@ void draw(){
   
   if(mousePressed){
     background(255);
+  }
+}
+
+void keyPressed() {
+  if( key == '\n'){
+    save("screen/"+filename+".jpg");
+    endRecord();
+    exit();
   }
 }

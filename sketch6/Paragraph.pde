@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Paragraph {
-  final String dir = "/home/sakekasi/Design/processing-sketches/sketch6/data/";
+  final String dir = "/home/sakekasi/Design/Processing/sketch6/data/";
   final String data_extension = ".markov";
   final String text_extension = ".txt";
 
   private ArrayList<String> words;
-  private MarkovChain m_chain;
+  public MarkovChain m_chain;
 
   public Paragraph(String title, String text) {
     words = new ArrayList<String>(Arrays.asList(text.split(" ")));

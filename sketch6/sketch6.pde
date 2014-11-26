@@ -10,32 +10,31 @@ String show;
 
 int textWidth=410, textHeight=380;
 
-void setup(){
+void setup() {
   p = new Paragraph("siddhartha", text);
   show = p.toString();
-  
+
   frameRate(30);
-  size(textWidth+145,textHeight+140);
-  colorMode(HSB,360,100,100, 100);
+  size(textWidth+145, textHeight+140);
+  colorMode(HSB, 360, 100, 100, 100);
   smooth();
-  
+
   helvetica = loadFont("HelveticaNeue.vlw");
   textFont(helvetica, 15);
   textLeading(20);
   fill(255);
-  
-  
-  
-  //String text = m_chain.generate(prefix.split(" "), 200);
-  
 }
 
-void draw(){
-  if(frameCount % 20 == 19){
-    p.swap();
-    show = p.toString();
-  }
-  
+void draw() {
   background(0);
-  text(show, 50,50,textWidth+50,textHeight+50);
+  text(show, 50, 50, textWidth+50, textHeight+50);
 }
+
+void keyPressed(){
+  if(key == ' '){
+    //p.swap();
+    //show = p.toString();
+    show = p.m_chain.generate(30);
+  }
+}
+

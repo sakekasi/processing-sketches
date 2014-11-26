@@ -60,10 +60,9 @@ public class MarkovChain {
     }
   }
   
-  public String generate(String[] prefix, int len){
-    if(!data.containsKey(join(prefix, " "))){
-      return "";
-    }
+  public String generate(int len){
+    ArrayList<String> keys = new ArrayList<String>(this.data.keySet());
+    String[] prefix = keys.get((int) random(keys.size())).split(" ");
     
     ArrayList<String> text = new ArrayList<String>();
     for(String word: prefix){
